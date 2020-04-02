@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0"
+      prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="sample.InfoController">
+    <children>
+        <ImageView fitHeight="230.0" fitWidth="480.0" layoutX="160.0" layoutY="7.0" pickOnBounds="true"
+                   preserveRatio="true">
+            <image>
+                <Image url="@../rsz_cover.png"/>
+            </image>
+        </ImageView>
+        <VBox layoutX="76.0" layoutY="234.0" prefHeight="423.0" prefWidth="272.0">
+            <children>
+                <Label text="Email">
+                    <font>
+                        <Font name="System Bold" size="15.0"/>
+                    </font>
+                </Label>
+                <TextField fx:id="emailAddress" prefHeight="30.0" prefWidth="230.0" promptText="Email Address">
+                    <VBox.margin>
+                        <Insets bottom="20.0" top="5.0"/>
+                    </VBox.margin>
+                </TextField>
+                <Label text="First Name">
+                    <font>
+                        <Font name="System Bold" size="15.0"/>
+                    </font>
+                </Label>
+                <TextField fx:id="firstName" layoutX="10.0" layoutY="36.0" prefHeight="30.0" prefWidth="230.0"
+                           promptText="First Name">
+                    <VBox.margin>
+                        <Insets bottom="20.0" top="5.0"/>
+                    </VBox.margin>
+                </TextField>
+                <Label layoutX="10.0" layoutY="87.0" text="Last Name">
+                    <font>
+                        <Font name="System Bold" size="15.0"/>
+                    </font>
+                </Label>
+                <TextField fx:id="lastName" layoutX="10.0" layoutY="108.0" prefHeight="30.0" prefWidth="230.0"
+                           promptText="Last name">
+                    <VBox.margin>
+                        <Insets bottom="20.0" top="5.0"/>
+                    </VBox.margin>
+                </TextField>
+                <Label layoutX="10.0" layoutY="164.0" text="Date of Birth">
+                    <font>
+                        <Font name="System Bold" size="15.0"/>
+                    </font>
+                </Label>
+                <DatePicker fx:id="dateOfBirth" onAction="#onDateInfo" prefHeight="30.0" prefWidth="300.0"
+                            promptText="DD/MM/YYYY">
+                    <VBox.margin>
+                        <Insets top="5.0"/>
+                    </VBox.margin>
+                </DatePicker>
+                <HBox prefHeight="30.0" prefWidth="272.0">
+                    <VBox.margin>
+                        <Insets top="20.0"/>
+                    </VBox.margin>
+                    <children>
+                        <RadioButton fx:id="economy" mnemonicParsing="false" onAction="#onTicketTypePress"
+                                     text="Economy">
+                            <toggleGroup>
+                                <ToggleGroup fx:id="group2"/>
+                            </toggleGroup>
+                        </RadioButton>
+                        <RadioButton fx:id="business" layoutX="10.0" layoutY="10.0" mnemonicParsing="false"
+                                     toggleGroup="$group2" onAction="#onTicketTypePress" text="Business">
+                            <HBox.margin>
+                                <Insets left="20.0"/>
+                            </HBox.margin>
+                        </RadioButton>
+                    </children>
+                </HBox>
+                <Button fx:id="backButton" mnemonicParsing="false" onAction="#onInfoPress" prefHeight="56.0"
+                        prefWidth="103.0" text="Back">
+                    <VBox.margin>
+                        <Insets top="30.0"/>
+                    </VBox.margin>
+                </Button>
+            </children>
+        </VBox>
+        <Button fx:id="printButton" layoutX="603.0" layoutY="601.0" mnemonicParsing="false" onAction="#onInfoPress"
+                prefHeight="56.0" prefWidth="103.0" text="Book"/>
+        <CheckBox fx:id="luggageCheck" layoutX="692.0" layoutY="263.0" mnemonicParsing="false"
+                  onAction="#onCheckPress"/>
+        <CheckBox fx:id="mealCheck" layoutX="692.0" layoutY="350.0" mnemonicParsing="false" onAction="#onCheckPress"/>
+        <Label layoutX="474.0" layoutY="263.0" text="Upgrade your cabin luggage">
+            <font>
+                <Font name="System Bold" size="15.0"/>
+            </font>
+        </Label>
+        <Label layoutX="483.0" layoutY="350.0" text="Meal Option (Business Only)">
+            <font>
+                <Font name="System Bold" size="15.0"/>
+            </font>
+        </Label>
+        <CheckBox fx:id="priorityCheck" layoutX="692.0" layoutY="425.0" mnemonicParsing="false"
+                  onAction="#onCheckPress"/>
+        <Label layoutX="510.0" layoutY="425.0" text="Priority (Business Only)">
+            <font>
+                <Font name="System Bold" size="15.0"/>
+            </font>
+        </Label>
+    </children>
+</Pane>
