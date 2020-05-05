@@ -1,4 +1,4 @@
-package sample.services;
+package sample;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,6 +12,7 @@ import sample.Ticket;
 import java.time.format.DateTimeFormatter;
 
 import java.io.IOException;
+import java.util.List;
 
 
 public class MainController {
@@ -42,13 +43,34 @@ public class MainController {
     @FXML
     private Button newOrder;
 
+    public static CsvRW getCsvInstance() {
+        return csvInstance;
+    }
+
+    public static void setCsvInstance(CsvRW csvInstance) {
+        MainController.csvInstance = csvInstance;
+    }
 
     @FXML
     private ToggleGroup group1;
 
+    private static CsvRW csvInstance = CsvRW.getInstance();
+
+    private static String path = "src/csvFiles/ticket.csv";
+
 
     private static Ticket ticket;
     private static int numOfTickets;
+
+    public static AuditService getAuditService() {
+        return auditService;
+    }
+
+    public static void setAuditService(AuditService auditService) {
+        MainController.auditService = auditService;
+    }
+
+    private static AuditService auditService;
 
 
     public void onBookPress(ActionEvent e) throws IOException {
@@ -62,11 +84,15 @@ public class MainController {
             if (!departureLocation.getText().equals("") && !destination.getText().equals("") ||
                     ticket.getArrivalDate() != null && (ticket.getDepartureDate() != null || returnDate.isDisabled())) {
 
+                auditService.logAction("Am facut o rezervare");
+
 
                 numOfTickets = Integer.parseInt(seatsNumber.getValue().toString());
-                System.out.println(numOfTickets);
+                ticket.setTicketNums(numOfTickets);
                 ticket.setDepartureLocation(departureLocation.getText());
                 ticket.setArrivalLocation(destination.getText());
+
+                csvInstance.writeCSV(path, ticket.toString());
 
                 if (numOfTickets > 0) {
                     stage = (Stage) bookButton.getScene().getWindow();
@@ -84,7 +110,6 @@ public class MainController {
         }
         if (root != null && stage != null) {
 
-            System.out.println("SASADADA");
             Scene scene = new Scene(root, 800, 700);
             stage.setScene(scene);
             stage.show();
@@ -98,10 +123,14 @@ public class MainController {
 
         // display only the departureDate calendar when "One way" RadioButton is selected
         RadioButton typeOfTrip = (RadioButton) group1.getSelectedToggle();
-        if (typeOfTrip.getText().equals("One way"))
+        if (typeOfTrip.getText().equals("One way")) {
+
+            ticket.setOneWay(true);
             returnDate.setDisable(true);
-        else
+        } else {
+            ticket.setOneWay(false);
             returnDate.setDisable(false);
+        }
 
         departureDate.setDisable(false);
 
@@ -137,15 +166,78 @@ public class MainController {
 
     }
 
+    // read the data from csv and load it
+    void loadData() {
+
+        List<Ticket> tickets = csvInstance.readCSV(path, (line) -> {
+
+            String[] elements = line.split(",");
+            return new Ticket(elements[0], elements[1], elements[2], elements[3], elements[4].matches("true"));
+
+        });
+        System.out.println("Tickets in the system");
+        for (Ticket ticket : tickets) {
+            System.out.println(ticket.getDepartureLocation() + " " + ticket.getArrivalLocation() +
+                    " " + ticket.getArrivalDate() + " " + ticket.getArrivalDate() + " One Way: " + ticket.getOneWay());
+        }
+
+
+        System.out.println("----------------------\nZboruri inregistrate");
+        List<Flight> flights = csvInstance.readCSV(FlightController.getFlightPath(), (line) -> {
+
+            String[] elements = line.split(",");
+            return new Flight(elements[0], elements[1], elements[2]);
+
+        });
+
+        for (Flight flight : flights) {
+
+            System.out.println(flight.getCompany() + " " + flight.getDate() + " " + flight.getTime());
+        }
+
+
+        System.out.println("----------------------------\nClienti inregistrati");
+        List<Client> clients = csvInstance.readCSV(InfoController.getClientPath(), (line) -> {
+
+            String[] elements = line.split(",");
+            return new Client(elements[0], elements[1], elements[2], elements[3], Integer.parseInt(elements[4]));
+        });
+
+        for (Client client : clients) {
+
+            System.out.println(client.getFirstName() + " " + client.getLastName() +
+                    " " + client.getDateOfBirth() + " " + client.getEmail() + " " + client.getNumOfTickets());
+        }
+
+
+        System.out.println("-------------------------------\nFirst class tickets registered");
+        List<FirstClassTicket> firstClassTickets = csvInstance.readCSV(InfoController.getFirstClassPath(), (line) -> {
+
+            String[] elements = line.split(",");
+            return new FirstClassTicket(elements[0], elements[1], elements[2], elements[3], elements[4].matches("true"), elements[5].matches("true"));
+
+        });
+        for (FirstClassTicket firstClassTicket : firstClassTickets) {
+
+            System.out.println(firstClassTicket.getDepartureDate() + " " + firstClassTicket.getArrivalDate() + " " + firstClassTicket.getDepartureLocation() + " "
+                    + firstClassTicket.getArrivalLocation() + " One way: " + firstClassTicket.getOneWay() + " Extra luggage: " + firstClassTicket.getExtraLuggage());
+        }
+
+    }
+
     @FXML
     public void initialize() {
 
         ticket = new Ticket();
+        // get the audit service
+        auditService = AuditService.getInstance();
         if (departureDate != null && returnDate != null) {
             departureDate.setDisable(true);
             returnDate.setDisable(true);
         }
 
+        // load the data and print it to the console
+        loadData();
 
     }
 
