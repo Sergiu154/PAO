@@ -1,0 +1,12 @@
+depDate,arrivalDate,departure,arrival,oneWay,luggage
+09-05-2020,16-05-2020,Bacau,Iasi,false,true
+16-05-2020,null,Living,Canapea,false,true
+10-05-2020,30-05-2020,Bucuresti,Panama,ture,false
+10-05-2020,30-05-2020,Bucuresti,Panama,true,false
+09-05-2020,14-05-2020,asdasdas,sdfsdfdsf,false,false
+10-05-2020,null,Bucharest,Paris,true,true
+15-05-2020,14-05-2020,Madrid,Paris,false,false
+01-05-2020,08-05-2020,Paris,Madrid,false,false
+09-05-2020,14-05-2020,Paris,Lyon,false,false
+09-05-2020,14-05-2020,Paris,Lyon,false,false
+02-05-2020,null,Bucharest,Mallorca,true,true
