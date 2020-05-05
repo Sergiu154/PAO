@@ -51,52 +51,67 @@ public class InfoController {
 
     private static Client client;
 
+    private FirstClassTicket firstClassTicket;
+
+    private static String clientPath = "src/csvFiles/client.csv";
+
+    private static String firstClassPath = "src/csvFiles/firstclass.csv";
+
 
     @FXML
     public void initialize() {
 
         client = new Client();
         ticket = MainController.getTicket();
-        if (ticket == null) {
-            System.out.println("Ma cac in el e null");
-        } else {
-            System.out.println(ticket.getArrivalDate());
-            System.out.println(ticket.getArrivalLocation());
-            System.out.println(ticket.getDepartureDate());
-            System.out.println(ticket.getDepartureLocation());
-        }
         priorityCheck.setDisable(true);
         mealCheck.setDisable(true);
 
     }
 
 
+    public static String getClientPath() {
+        return clientPath;
+    }
+
+    public static String getFirstClassPath() {
+        return firstClassPath;
+    }
+
     public void onInfoPress(ActionEvent e) throws IOException {
 
         Stage stage = null;
         Parent root = null;
         if (e.getSource() == printButton) {
-            System.out.print("PRINT");
 
+            MainController.getAuditService().logAction("Am printat un bilet");
 
             client.setFirstName(firstName.getText());
             client.setLastName(lastName.getText());
             client.setEmail(emailAddress.getText());
             client.setDateOfBirth(dateOfBirth.getValue().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")));
             client.addTicket(ticket);
+            client.setNumOfTickets(ticket.getTicketNums());
+
+            RadioButton selected = (RadioButton) group2.getSelectedToggle();
+
+
+            // write client and firstTicket objects to their csv
+
+            MainController.getCsvInstance().writeCSV(clientPath, client.toString());
+            MainController.getCsvInstance().writeCSV(firstClassPath, ticket.toString() + "," + ticket.getOneWay());
+
+
             stage = (Stage) printButton.getScene().getWindow();
             root = FXMLLoader.load(getClass().getResource("/scenes/print_scene.fxml"));
         } else if (e.getSource() == backButton) {
-            System.out.print("BACK");
 
-
+            MainController.getAuditService().logAction("M-am intors sa selectez zborul");
             stage = (Stage) backButton.getScene().getWindow();
             root = FXMLLoader.load(getClass().getResource("/scenes/flights.fxml"));
         }
 
         if (root != null && stage != null) {
 
-            System.out.println("SASADADA");
             Scene scene = new Scene(root, 800, 700);
             stage.setScene(scene);
             stage.show();
@@ -119,7 +134,8 @@ public class InfoController {
         RadioButton selected = (RadioButton) group2.getSelectedToggle();
         if (selected.getText().equals("Business")) {
 
-            ticket = new FirstClassTicket(ticket, true, true);
+            firstClassTicket = new FirstClassTicket(ticket, true, true);
+
             priorityCheck.setSelected(true);
             mealCheck.setSelected(true);
         } else if (selected.getText().equals("Economy")) {
@@ -133,8 +149,9 @@ public class InfoController {
 
         Boolean extraLuggage = false, menuIncluded = false, priority = false;
 
-        if (e.getSource() == luggageCheck)
+        if (e.getSource() == luggageCheck) {
             ticket.setExtraLuggage(luggageCheck.isSelected());
+        }
 
 
     }

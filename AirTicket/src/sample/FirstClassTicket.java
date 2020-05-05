@@ -7,10 +7,25 @@ public class FirstClassTicket extends Ticket {
     private Boolean menuIncluded;
     private Boolean priority;
 
+    @Override
+    public String toString() {
+
+
+        return super.getDepartureDate() + "," +
+                super.getArrivalDate() + ',' +
+                super.getDepartureLocation() + ',' +
+                super.getArrivalLocation() + ',' +
+                super.getOneWay() + ',' + super.getExtraLuggage();
+    }
+
     public FirstClassTicket(Ticket t, Boolean menuIncluded, Boolean priority) {
         super(t);
         this.menuIncluded = menuIncluded;
         this.priority = priority;
+    }
+
+    public FirstClassTicket(String departureDate, String arrivalDate, String departureLocation, String arrivalLocation, Boolean oneWay, Boolean extraLuggage) {
+        super(departureDate, arrivalDate, departureLocation, arrivalLocation, oneWay, extraLuggage);
     }
 
     public FirstClassTicket(String departureDate, String arrivalDate, Flight flightDetails, String departureLocation, String arrivalLocation, Boolean extraLuggage, double price, Boolean menuIncluded, Boolean priority) {

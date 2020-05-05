@@ -1,4 +1,4 @@
-package sample.services;
+package sample;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -8,8 +8,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import sample.Client;
-import sample.Ticket;
 
 import java.io.IOException;
 
@@ -31,7 +29,7 @@ public class PrintController {
     public void initialize() {
 
         client = InfoController.getClient();
-        Ticket clientTicket = client.getTickets().get(client.getNumOfTickets() - 1);
+        Ticket clientTicket = client.getTickets().get(0);
         client.printTicket(displayPane, clientTicket);
 
     }
@@ -44,11 +42,13 @@ public class PrintController {
 
 
         if (e.getSource() == backInfo) {
+            MainController.getAuditService().logAction("M-am intors sa schimba datele personale");
             stage = (Stage) backInfo.getScene().getWindow();
             root = FXMLLoader.load(getClass().getResource("/scenes/secondScene.fxml"));
 
 
         } else {
+            MainController.getAuditService().logAction("Incepe o noua comanda");
             stage = (Stage) newOrder.getScene().getWindow();
             root = FXMLLoader.load(getClass().getResource("/scenes/sample.fxml"));
 

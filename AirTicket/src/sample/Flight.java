@@ -8,9 +8,40 @@ public class Flight {
     private Airplane airplane;
     private String planeType;
     HashMap<Seat, Boolean> ticketsPurchased;
+
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    @Override
+    public String toString() {
+        return company + ',' + date + ',' + time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    public Flight(String company, String date, String time) {
+        this.company = company;
+        this.date = date;
+        this.time = time;
+    }
+
     private String company;
     private String departureAirport;
     private String arrivalAirport;
+    private String date;
+    private String time;
 
     public Flight() {
     }

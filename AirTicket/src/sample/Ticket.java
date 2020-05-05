@@ -11,14 +11,58 @@ public class Ticket implements Comparable<Ticket> {
     private Flight flightDetails;
     private String departureLocation;
     private String arrivalLocation;
+    private Boolean oneWay;
+    private int ticketNums;
+
+    public int getTicketNums() {
+        return ticketNums;
+    }
+
+    public void setTicketNums(int ticketNums) {
+        this.ticketNums = ticketNums;
+    }
+
     private Boolean extraLuggage;
     private double price;
 
+    public Ticket(String departureDate, String arrivalDate, String departureLocation, String arrivalLocation, Boolean oneWay, Boolean extraLuggage) {
+        this.departureDate = departureDate;
+        this.arrivalDate = arrivalDate;
+        this.departureLocation = departureLocation;
+        this.arrivalLocation = arrivalLocation;
+        this.oneWay = oneWay;
+        this.extraLuggage = extraLuggage;
+    }
+
+    @Override
+    public String toString() {
+        return departureDate + "," +
+                arrivalDate + ',' +
+                departureLocation + ',' +
+                arrivalLocation + ',' +
+                oneWay;
+    }
+
+    public Boolean getOneWay() {
+        return oneWay;
+    }
+
+    public void setOneWay(Boolean oneWay) {
+        this.oneWay = oneWay;
+    }
 
     @Override
     public int compareTo(Ticket o) {
 
         return departureDate.compareTo(o.departureDate);
+    }
+
+    public Ticket(String departureDate, String arrivalDate, String departureLocation, String arrivalLocation, Boolean oneWay) {
+        this.departureDate = departureDate;
+        this.arrivalDate = arrivalDate;
+        this.departureLocation = departureLocation;
+        this.arrivalLocation = arrivalLocation;
+        this.oneWay = oneWay;
     }
 
     public Ticket() {

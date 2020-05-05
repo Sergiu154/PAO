@@ -13,6 +13,11 @@ public class Client implements Print {
     private String email;
     private int numOfTickets;
 
+    @Override
+    public String toString() {
+        return firstName + ',' + lastName + ',' + dateOfBirth + "," + email + ',' + numOfTickets;
+    }
+
     public int getNumOfTickets() {
         return numOfTickets;
     }
@@ -38,6 +43,14 @@ public class Client implements Print {
         lastName = "";
         dateOfBirth = "";
         tickets = new ArrayList<>();
+    }
+
+    public Client(String firstName, String lastName, String email, String dateOfBirth, int numOfTickets) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.numOfTickets = numOfTickets;
+        this.dateOfBirth = dateOfBirth;
     }
 
     public Client(String firstName, String lastName, String dateOfBirth) {
