@@ -56,7 +56,6 @@ public class PrintController {
 
         if (root != null && stage != null) {
 
-            System.out.println("SASADADA");
             Scene scene = new Scene(root, 800, 700);
             stage.setScene(scene);
             stage.show();
