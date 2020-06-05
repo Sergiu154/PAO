@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="700.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.admin.AirportController">
+    <children>
+        <Label layoutX="29.0" layoutY="60.0" text="Add Airport" />
+        <Label layoutX="33.0" layoutY="341.0" text="Update airport" />
+        <Label layoutX="29.0" layoutY="512.0" text="Find ticket" />
+        <Label layoutX="31.0" layoutY="222.0" text="Remove Airport by name" />
+        <TextField fx:id="addLocation" layoutX="28.0" layoutY="90.0" prefHeight="26.0" prefWidth="139.0" promptText="location" />
+        <TextField fx:id="addName" layoutX="28.0" layoutY="137.0" prefHeight="26.0" prefWidth="139.0" promptText="name" />
+        <TextField fx:id="findName" layoutX="28.0" layoutY="554.0" prefHeight="26.0" prefWidth="139.0" promptText="Name" />
+        <RadioButton fx:id="depDate" layoutX="142.0" layoutY="413.0" mnemonicParsing="false" onAction="#onUpdateOption" text="Location">
+            <toggleGroup>
+                <ToggleGroup fx:id="group1" />
+            </toggleGroup>
+        </RadioButton>
+        <RadioButton fx:id="arrDate" layoutX="31.0" layoutY="413.0" mnemonicParsing="false" onAction="#onUpdateOption" text="Name" toggleGroup="$group1" />
+        <TextField fx:id="removeName" layoutX="28.0" layoutY="254.0" prefHeight="26.0" prefWidth="139.0" promptText="Name" />
+        <TextField fx:id="updateOption" layoutX="31.0" layoutY="377.0" prefHeight="26.0" prefWidth="139.0" promptText="Select an option" />
+        <Button fx:id="addBtn" layoutX="31.0" layoutY="180.0" mnemonicParsing="false" onAction="#onPress" text="Add" />
+        <Button fx:id="removeBtn" layoutX="31.0" layoutY="291.0" mnemonicParsing="false" onAction="#onPress" text="Remove" />
+        <Button fx:id="updateBtn" layoutX="31.0" layoutY="451.0" mnemonicParsing="false" onAction="#onPress" text="Update" />
+        <Button fx:id="findBtn" layoutX="31.0" layoutY="613.0" mnemonicParsing="false" onAction="#onPress" text="Find" />
+      <Button fx:id="backBtn" layoutX="618.0" layoutY="626.0" mnemonicParsing="false" onAction="#onPress" prefHeight="47.0" prefWidth="88.0" text="Back" />
+      <TextField fx:id="updateID" layoutX="185.0" layoutY="377.0" prefHeight="26.0" prefWidth="139.0" promptText="ID" />
+      <TextField fx:id="findLocation" layoutX="176.0" layoutY="554.0" prefHeight="26.0" prefWidth="139.0" promptText="location" />
+    </children>
+</AnchorPane>

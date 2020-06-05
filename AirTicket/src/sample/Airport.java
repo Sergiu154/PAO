@@ -17,6 +17,16 @@ public class Airport {
         this.availableFlights = availableFlighs;
     }
 
+    public Airport(String location, String name) {
+        this.location = location;
+        this.name = name;
+    }
+
+    @Override
+    public String toString() {
+
+        return location + ',' + name;
+    }
 
     public String getLocation() {
         return location;

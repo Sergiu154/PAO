@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="700.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.admin.ClientController">
+    <children>
+        <Label layoutX="29.0" layoutY="60.0" text="Add Client" />
+        <Label layoutX="33.0" layoutY="341.0" text="Update client" />
+        <Label layoutX="29.0" layoutY="512.0" text="Find client" />
+        <Label layoutX="31.0" layoutY="222.0" text="Remove client by name" />
+        <TextField fx:id="addLast" layoutX="218.0" layoutY="90.0" prefHeight="26.0" prefWidth="146.0" promptText="Last Name" />
+        <TextField fx:id="addFirst" layoutX="28.0" layoutY="90.0" onAction="#onPress" prefHeight="26.0" prefWidth="154.0" promptText="First name" />
+        <TextField fx:id="findFirst" layoutX="28.0" layoutY="554.0" prefHeight="26.0" prefWidth="139.0" promptText="First Name" />
+        <TextField fx:id="findLast" layoutX="218.0" layoutY="554.0" prefHeight="26.0" prefWidth="139.0" promptText="last name" />
+        <RadioButton fx:id="depDate" layoutX="142.0" layoutY="413.0" mnemonicParsing="false" text="Last Name">
+            <toggleGroup>
+                <ToggleGroup fx:id="group1" />
+            </toggleGroup>
+        </RadioButton>
+        <RadioButton fx:id="arrDate" layoutX="31.0" layoutY="413.0" mnemonicParsing="false" text="First Name" toggleGroup="$group1" />
+        <RadioButton fx:id="ticketNum" layoutX="272.0" layoutY="413.0" mnemonicParsing="false" text="Email">
+            <toggleGroup>
+                <ToggleGroup fx:id="group11" />
+            </toggleGroup>
+        </RadioButton>
+        <Button fx:id="addBtn" layoutX="31.0" layoutY="180.0" mnemonicParsing="false" onAction="#onPress" text="Add" />
+        <Button fx:id="removeBtn" layoutX="31.0" layoutY="291.0" mnemonicParsing="false" onAction="#onPress" text="Remove" />
+        <Button fx:id="updateBtn" layoutX="31.0" layoutY="451.0" mnemonicParsing="false" onAction="#onPress" text="Update" />
+        <Button fx:id="findBtn" layoutX="31.0" layoutY="613.0" mnemonicParsing="false" onAction="#onPress" text="Find" />
+      <TextField fx:id="addEmail" layoutX="27.0" layoutY="136.0" prefHeight="26.0" prefWidth="154.0" promptText="email" />
+      <TextField fx:id="removeFirst" layoutX="27.0" layoutY="246.0" prefHeight="26.0" prefWidth="154.0" promptText="First name" />
+      <TextField fx:id="removeLast" layoutX="221.0" layoutY="246.0" prefHeight="26.0" prefWidth="146.0" promptText="Last Name" />
+      <TextField fx:id="updateOption" layoutX="28.0" layoutY="369.0" prefHeight="26.0" prefWidth="154.0" promptText="Value" />
+        <Button fx:id="backBtn" layoutX="618.0" layoutY="626.0" mnemonicParsing="false" onAction="#onPress" prefHeight="47.0" prefWidth="88.0" text="Back" />
+      <TextField fx:id="addAge" layoutX="218.0" layoutY="136.0" prefHeight="26.0" prefWidth="146.0" promptText="Age" />
+      <Spinner fx:id="ticketsSpinner" initialValue="0" layoutX="400.0" layoutY="90.0" max="10" min="0" />
+      <TextField fx:id="updateID" layoutX="214.0" layoutY="369.0" prefHeight="26.0" prefWidth="154.0" promptText="ID" />
+
+    </children>
+</AnchorPane>

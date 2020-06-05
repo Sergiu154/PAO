@@ -7,6 +7,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import sample.DB.AirportDB;
+import sample.DB.ClientDB;
+import sample.DB.FlightDB;
+import sample.DB.TicketDB;
 import sample.Ticket;
 
 import java.time.format.DateTimeFormatter;
@@ -39,6 +43,9 @@ public class MainController {
 
     @FXML
     private TextField departureLocation;
+
+    @FXML
+    private Button adminButton;
 
 
     @FXML
@@ -108,6 +115,12 @@ public class MainController {
 
             stage = (Stage) newOrder.getScene().getWindow();
             root = FXMLLoader.load(getClass().getResource("/scenes/sample.fxml"));
+
+        } else if (e.getSource() == adminButton) {
+            System.out.println("Hello");
+            stage = (Stage) adminButton.getScene().getWindow();
+            root = FXMLLoader.load(getClass().getResource("/scenes/admin_scene.fxml"));
+
         }
         if (root != null && stage != null) {
 
@@ -239,6 +252,12 @@ public class MainController {
 
         // load the data and print it to the console
         loadData();
+
+        // create the table if it's not already created
+        TicketDB ticketDB = TicketDB.getInstance();
+        FlightDB flight = FlightDB.getInstance();
+        ClientDB client = ClientDB.getInstance();
+        AirportDB airportDB = AirportDB.getInstance();
 
     }
 

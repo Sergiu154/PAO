@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.admin.AdminController">
+   <children>
+      <Label layoutX="163.0" layoutY="98.0" text="Choose which data to modify">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Button fx:id="flightBtn" layoutX="82.0" layoutY="187.0" mnemonicParsing="false" onAction="#onModify" prefHeight="39.0" prefWidth="68.0" text="Flight" />
+       <Button fx:id="clientBtn" layoutX="203.0" layoutY="187.0" mnemonicParsing="false" onAction="#onModify" prefHeight="39.0" prefWidth="68.0" text="Client" />
+       <Button fx:id="ticketBtn" layoutX="351.0" layoutY="187.0" mnemonicParsing="false" onAction="#onModify" prefHeight="39.0" prefWidth="61.0" text="Ticket" />
+       <Button fx:id="airportBtn" layoutX="475.0" layoutY="187.0" mnemonicParsing="false" onAction="#onModify" prefHeight="39.0" prefWidth="62.0" text="Airport" />
+   </children>
+</AnchorPane>

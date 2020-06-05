@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="700.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.admin.TicketController">
+   <children>
+      <Label layoutX="29.0" layoutY="60.0" text="Add Ticket" />
+       <Label layoutX="33.0" layoutY="341.0" text="Update ticket by ticket id " />
+       <Label layoutX="29.0" layoutY="512.0" text="Find ticket" />
+       <Label layoutX="31.0" layoutY="222.0" text="Remove Ticket by departure date " />
+      <TextField fx:id="addDepLoc" layoutX="225.0" layoutY="90.0" prefHeight="26.0" prefWidth="139.0" promptText="departure location" />
+      <TextField fx:id="addArrLoc" layoutX="225.0" layoutY="139.0" prefHeight="26.0" prefWidth="139.0" promptText="arrival location" />
+      <Spinner fx:id="ticketSpinner" initialValue="0" layoutX="413.0" layoutY="90.0" max="10" min="0" prefHeight="26.0" prefWidth="66.0" />
+      <DatePicker fx:id="addDepDate" layoutX="28.0" layoutY="90.0" prefHeight="26.0" prefWidth="167.0" promptText="departure date" />
+      <DatePicker fx:id="addArrDate" layoutX="28.0" layoutY="139.0" prefHeight="26.0" prefWidth="167.0" promptText="arrival date" />
+      <TextField fx:id="findDepLoc" layoutX="28.0" layoutY="554.0" prefHeight="26.0" prefWidth="139.0" promptText="departure location" />
+      <TextField fx:id="findArrLoc" layoutX="225.0" layoutY="554.0" prefHeight="26.0" prefWidth="139.0" promptText="arrival location" />
+       <RadioButton fx:id="depDate" layoutX="142.0" layoutY="413.0" mnemonicParsing="false" onAction="#onUpdateOption" text="Dep. date">
+           <toggleGroup>
+               <ToggleGroup fx:id="group1" />
+           </toggleGroup>
+       </RadioButton>
+       <RadioButton fx:id="arrDate" layoutX="31.0" layoutY="413.0" mnemonicParsing="false" onAction="#onUpdateOption" text="Arr. date" toggleGroup="$group1" />
+      <TextField fx:id="removeDeparture" layoutX="28.0" layoutY="254.0" prefHeight="26.0" prefWidth="139.0" promptText="departure location" />
+      <TextField fx:id="updateOption" layoutX="28.0" layoutY="378.0" prefHeight="26.0" prefWidth="139.0" promptText="What to update" />
+      <Button fx:id="addBtn" layoutX="31.0" layoutY="180.0" mnemonicParsing="false" onAction="#onPress" text="Add" />
+      <Button fx:id="removeBtn" layoutX="31.0" layoutY="291.0" mnemonicParsing="false" onAction="#onPress" text="Remove" />
+      <Button fx:id="updateBtn" layoutX="31.0" layoutY="451.0" mnemonicParsing="false" onAction="#onPress" text="Update" />
+      <Button fx:id="findBtn" layoutX="31.0" layoutY="613.0" mnemonicParsing="false" onAction="#onPress" text="Find" />
+       <Button fx:id="backBtn" layoutX="618.0" layoutY="626.0" mnemonicParsing="false" onAction="#onPress" prefHeight="47.0" prefWidth="88.0" text="Back" />
+      <TextField fx:id="ticketID" layoutX="178.0" layoutY="378.0" prefHeight="26.0" prefWidth="139.0" promptText="ID" />
+
+   </children>
+</AnchorPane>
