@@ -23,11 +23,7 @@
     <autoscroll-to-editor value="false" />
     <autoscroll-from-editor value="true" />
     <show-object-properties value="false" />
-    <loaded-nodes>
-      <connection connection-id="054d4322-b29d-4e6b-b17f-62cdcd911814">
-        <schema name="air_ticket" object-types="column, constraint, index, table, procedure, function, dataset trigger, view" />
-      </connection>
-    </loaded-nodes>
+    <loaded-nodes />
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="054d4322-b29d-4e6b-b17f-62cdcd911814">

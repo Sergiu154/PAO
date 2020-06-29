@@ -10,3 +10,4 @@ depDate,arrivalDate,departure,arrival,oneWay,luggage
 09-05-2020,14-05-2020,Paris,Lyon,false,false
 09-05-2020,14-05-2020,Paris,Lyon,false,false
 02-05-2020,null,Bucharest,Mallorca,true,true
+13-06-2020,null,Roman,Bacau,true,true
